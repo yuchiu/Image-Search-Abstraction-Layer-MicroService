@@ -1,14 +1,14 @@
 <html>
 
 <head>
-    <title>My-Express-BoilerPlate</title>
+    <title>Image-Search-Abstraction-Layer-MicroService</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
     <div class="container">
         <h1 class="header">
-            My-Express-BoilerPlate
+            Image-Search-Abstraction-Layer-MicroService
         </h1>
     </div>
 </body>
