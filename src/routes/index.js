@@ -1,4 +1,5 @@
 const SearchTerm = require('../models/SearchTerm')
+const Bing = require('node-bing-api')({accKey:'db63791f74064c3ca3a65570902162f5'})
 
 module.exports = (app) => {
     app.get('/',
@@ -6,6 +7,9 @@ module.exports = (app) => {
             res.render("index")
         }
     )
+    app.get('/api/', (req, res) => {
+        res.send({err: 'params following /api/ is empty, try /api/imagesearch/:searchVal or /api/:recentsearch'})
+    })
     app.get('/api/imagesearch/:searchVal',
         function (req, res) {
             const {
@@ -28,14 +32,19 @@ module.exports = (app) => {
             })
         }
     )
-    app.get('/api/recentsearch', (req, res) => {
+    app.get('/api/:recentsearch', (req, res) => {
+        const {recentsearch} =req.params
         SearchTerm.find({}, (err, data) => {
             if (err) {
-                res.send({
+                return res.send({
                     err: "error fetching recentsearch"
                 })
             }
-            res.json(data)
+        })
+        Bing.images(recentsearch,{
+            top:10
+        }, function (err,rez,body){
+            res.send(body)
         })
     })
 }

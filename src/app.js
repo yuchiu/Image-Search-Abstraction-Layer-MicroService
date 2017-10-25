@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const config = require('./config/config')
 const routes = require('./routes/')
 const mongoose = require('mongoose')
-const Bing = require('node-bing-api')({accKey:'8da440816a394e02857c6b39ccb50f11'})
 
 const app = express()
 routes(app)
